@@ -1,0 +1,108 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>nl.ivonet.example</groupId>
+    <artifactId>JavaAgentExample</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>JavaAgentExample</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-api</artifactId>-->
+            <!--<version>1.7.5</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+          <!--<groupId>asm</groupId>-->
+          <!--<artifactId>asm</artifactId>-->
+          <!--<version>3.3.1</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+          <!--<groupId>com.sun</groupId>-->
+          <!--<artifactId>tools</artifactId>-->
+          <!--<version>1.6.0</version>-->
+          <!--<scope>system</scope>-->
+          <!--<systemPath>${java.home}/../lib/tools.jar</systemPath>-->
+        <!--</dependency>-->
+
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>jcl-over-slf4j</artifactId>
+          <version>1.6.1</version>
+          <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+          <version>1.0.13</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.9.0.GA</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>IvoNetJavaAgent</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>attached</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <finalName>IvoNetJavaAgent</finalName>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <archive>
+                                <!--<manifest>-->
+                                    <!--<mainClass>nl.ivonet.example.code.MyMain</mainClass>-->
+                                <!--</manifest>-->
+                                <manifestEntries>
+                                    <Premain-Class>nl.ivonet.example.agent.IvoNetJavaAgent</Premain-Class>
+                                    <Agent-Class>nl.ivonet.example.agent.IvoNetJavaAgent</Agent-Class>
+                                    <Can-Redefine-Classes>true</Can-Redefine-Classes>
+                                    <Can-Retransform-Classes>true</Can-Retransform-Classes>
+                                </manifestEntries>
+                            </archive>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
