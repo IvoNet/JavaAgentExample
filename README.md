@@ -5,8 +5,10 @@ This project demonstrates the usage of a javaagent
 
 # Usage #
 
-mvn package
-java -javaagent:target/JavaAgentExample-1.0-SNAPSHOT-jar-with-dependencies.jar=FooBarBaz nl.ivonet.example.code.MyMain foo bar baz
+* open command prompt / terminal in this folder
+* mvn package
+* java -javaagent:target/IvoNetJavaAgent-jar-with-dependencies.jar=blabla nl.ivonet.example.code.MyMain foo bar baz
+
 
 
 # Description #
