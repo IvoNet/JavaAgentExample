@@ -45,5 +45,5 @@ That's just about it.
 
 I have done some researche on the net and some of the sites I found interesting were:
 
-* http://www.slideshare.net/arhan/taming-java-agents
-* http://dhruba.name/2010/02/07/creation-dynamic-loading-and-instrumentation-with-javaagents/
+* [taming-java-agents](http://ivo2u.nl/WR)
+* [Dynamic loading with Java Agents](http://ivo2u.nl/Wx)
